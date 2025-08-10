@@ -468,14 +468,14 @@
     }
     setInterval(updateCountdown,1000); updateCountdown();
 
-    // Surprise button: confetti + reveal message
+    // Surprise button: reveal message
     surpriseBtn.addEventListener('click', () => {
     surpriseBtn.disabled = true;
-   surpriseBtn.textContent = "Meet me tonight at our spot ";
+   surpriseBtn.textContent = "I LOVE YOU";
   
   // Create emoji span
   const emojiSpan = document.createElement('span');
-  emojiSpan.textContent = '😘';
+  emojiSpan.textContent = '😘😘😘';
   emojiSpan.classList.add('pulse-emoji');
   
   surpriseBtn.appendChild(emojiSpan);
