@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy 2nd Year anniversary Bebo ❤️</title>
+  <style>
+    /* Simple reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;color:#111}
+    a{color:inherit}
+
+    /* Hero */
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;flex-direction:column;background:linear-gradient(135deg,#fde68a 0%, #fbc2eb 100%);padding:2rem;text-align:center}
+    .title{font-size:clamp(1.6rem,4vw,3rem);font-weight:700;letter-spacing:0.4px}
+    .subtitle{margin-top:.6rem;font-size:clamp(1rem,2.2vw,1.2rem);opacity:.9}
+    .cta{margin-top:1.4rem;padding:.6rem 1rem;border-radius:10px;background:#fff;border:none;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+
+    /* floating hearts */
+    .hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .heart{position:absolute;width:20px;height:20px;background:red;transform:rotate(45deg);border-radius:4px 4px 0 0}
+    .heart:before,.heart:after{content:'';position:absolute;width:20px;height:20px;background:red;border-radius:50%}
+    .heart:before{top:-10px;left:0}
+    .heart:after{left:10px;top:0}
+
+    /* container */
+    .container{max-width:980px;margin:0 auto;padding:2rem}
+
+    /* timeline */
+    .timeline{display:flex;flex-direction:column;gap:1.2rem;margin-top:2rem}
+    .moment{display:flex;gap:1rem;align-items:flex-start;background:#fff;padding:1rem;border-radius:12px;box-shadow:0 8px 20px rgba(2,6,23,.06)}
+    .moment img{width:96px;height:96px;object-fit:cover;border-radius:10px}
+    .moment .meta{flex:1}
+    .date{font-size:.85rem;color:#666}
+    .caption{margin-top:.4rem}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px;margin-top:1rem}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:8px}
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;padding:2rem}
+    .lightbox img{max-width:95%;max-height:85%;border-radius:8px}
+
+    /* letter */
+    .letter-outer{background:#fdf7f3;padding:1.2rem;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.06);margin-top:1.2rem}
+    .envelope{width:100%;height:120px;background:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer}
+    .letter{display:none;padding:1rem;font-family:'Segoe Script', 'Bradley Hand', cursive;background:#fff;border-radius:8px}
+
+    /* footer & countdown */
+    .countdown{margin-top:1rem;font-weight:600}
+
+    /* small screens */
+    @media (max-width:600px){.moment img{width:72px;height:72px}}
+
+    /* music button */
+    .music-btn{position:fixed;right:16px;bottom:16px;background:#fff;padding:.6rem;border-radius:50%;box-shadow:0 8px 20px rgba(0,0,0,.12);cursor:pointer}
+
+    /* confetti layer */
+    #confetti-canvas{position:fixed;left:0;top:0;pointer-events:none;width:100%;height:100%}
+  </style>
+</head>
+<body>
+  <div class="hearts" aria-hidden="true"></div>
+
+  <section class="hero">
+    <div class="container">
+      <h1 class="title">Happy 2 Years, Bebo ❤️</h1>
+      <p class="subtitle">26 Aug 2025 — Two years of bakchodi, midnight talks and us.</p>
+      <button class="cta" id="enterBtn">Open our story</button>
+    </div>
+  </section>
+
+  <main class="container" id="mainContent" style="display:none">
+    <!-- Timeline -->
+    <h2 style="font-size:1.2rem">Our Timeline</h2>
+    <div class="timeline" id="timeline">
+      <!-- Example moment. Replace images and captions below. -->
+      <div class="moment">
+        <img src="images/placeholder1.jpg" alt="first date">
+        <div class="meta">
+          <div class="date">02/09/2023 — First date</div>
+          <div class="caption"> You waited and I am forever grateful to you. </div>
+        </div>
+      </div>
+
+      <div class="moment">
+        <img src="file:///Users/ayan/Desktop/Screenshot%202025-07-23%20at%2009.11.25.png" alt="Recent date">
+        <div class="meta">
+          <div class="date">19/04/2025 — Recent date</div>
+          <div class="caption">Pina coladas and LITs kept us company for a great night</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Gallery -->
+    <h2 style="margin-top:1.2rem;font-size:1.2rem">Gallery</h2>
+    <div class="gallery" id="gallery">
+      <img src="file:///Users/ayan/Desktop/Screenshot%202025-05-26%20at%2022.36.57.png" alt="pic1">
+      <img src="images/placeholder2.jpg" alt="pic2">
+      <img src="images/placeholder3.jpg" alt="pic3">
+      <img src="images/placeholder4.jpg" alt="pic4">
+    </div>
+
+    <div class="lightbox" id="lightbox"><img src="" alt="expanded"><button style="position:absolute;top:12px;right:12px;padding:.4rem .6rem;border-radius:8px;border:none;">Close</button></div>
+
+    <!-- Letter -->
+    <h2 style="margin-top:1.2rem;font-size:1.2rem">A letter for Bebo</h2>
+    <div class="letter-outer">
+      <div class="envelope" id="openLetter">Click to open your letter 💌</div>
+      <div class="letter" id="letterText">
+        <!-- Replace the sample text below with your real letter. -->
+        <p>My Bebo,</p>
+        <p>These two years with you have been the best chapters of my life. You are warmth in my cold, laughter in my bad days and the calm when everything else is loud. I love you more each day.</p>
+        <p>— Ayan</p>
+      </div>
+    </div>
+
+    <!-- Future Plans -->
+    <h2 style="margin-top:1.2rem;font-size:1.2rem">Future Together</h2>
+    <ul style="margin-top:.6rem;line-height:1.6">
+      <li>1. Learn salsa together (you lead this time)</li>
+      <li>2. Midnight ice-cream runs</li>
+      <li>3. Road trip to somewhere we can't pronounce</li>
+      <li>4. Cook one fancy meal per month</li>
+      <li>5. Saturday morning long walks</li>
+    </ul>
+
+    <!-- Countdown + Surprise -->
+    <div style="margin-top:1.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap">
+      <div class="countdown" id="countdown">Year 3 loading: --d --h --m --s</div>
+      <button class="cta" id="surpriseBtn">Open my surprise ❤️</button>
+    </div>
+
+    <footer style="margin-top:2rem;padding:1rem;text-align:center;color:#666">Made with love — 26/08/2025</footer>
+  </main>
+
+  <!-- music (replace "audio/tumsehi.mp3" with a hosted mp3 file URL, or use the youtube embed option in the comments below) -->
+  <audio id="bgAudio" loop preload="auto" muted>
+    <source src="audio/tumsehi.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <button class="music-btn" id="musicBtn" aria-pressed="false" title="Play / Pause music">🔈</button>
+
+  <!-- confetti canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <script>
+    // ----- tiny helpers -----
+    const enterBtn = document.getElementById('enterBtn');
+    const mainContent = document.getElementById('mainContent');
+    const heartsLayer = document.querySelector('.hearts');
+    const openLetter = document.getElementById('openLetter');
+    const letterText = document.getElementById('letterText');
+    const gallery = document.getElementById('gallery');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = lightbox.querySelector('img');
+    const lbClose = lightbox.querySelector('button');
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    const audio = document.getElementById('bgAudio');
+    const musicBtn = document.getElementById('musicBtn');
+
+    // Show main content
+    enterBtn.addEventListener('click', ()=>{
+      document.querySelector('.hero').style.display='none';
+      mainContent.style.display='block';
+      // try to play muted audio (most browsers allow muted auto-play)
+      audio.play().catch(()=>{});
+    });
+
+    // Floating hearts generator
+    function spawnHeart(){
+      const h = document.createElement('div');
+      h.className='heart';
+      const size = Math.random()*28+12;
+      h.style.width = size+'px';
+      h.style.height = size+'px';
+      h.style.left = Math.random()*100+'%';
+      h.style.top = (Math.random()*60)+'%';
+      h.style.opacity = (Math.random()*0.6)+0.4;
+      heartsLayer.appendChild(h);
+      setTimeout(()=>{h.style.transform='translateY(-120vh) scale(.6)';h.style.transition='all 5s linear';},50);
+      setTimeout(()=>h.remove(),6000);
+    }
+    setInterval(spawnHeart,800);
+
+    // Letter open
+    openLetter.addEventListener('click', ()=>{
+      openLetter.style.display='none';
+      letterText.style.display='block';
+      letterText.scrollIntoView({behavior:'smooth'});
+    });
+
+    // Gallery lightbox
+    gallery.addEventListener('click', (e)=>{
+      if(e.target.tagName==='IMG'){
+        lbImg.src = e.target.src;
+        lightbox.style.display='flex';
+      }
+    });
+    lbClose.addEventListener('click', ()=>{lightbox.style.display='none'});
+    lightbox.addEventListener('click',(e)=>{if(e.target===lightbox) lightbox.style.display='none'});
+
+    // Music control (muted by default). Clicking toggles mute + visual
+    musicBtn.addEventListener('click', ()=>{
+      if(audio.muted){audio.muted=false;audio.play().catch(()=>{});musicBtn.textContent='🔊';musicBtn.setAttribute('aria-pressed', 'true');}
+      else{audio.muted=true;musicBtn.textContent='🔈';musicBtn.setAttribute('aria-pressed','false');}
+    });
+
+    // Countdown to next anniversary (26 Aug 2025 given in this template)
+    const targetDate = new Date('2026-08-26T00:00:00'); // year 3 date; adjust if needed
+    function updateCountdown(){
+      const now = new Date();
+      let diff = Math.max(0, targetDate - now);
+      const days = Math.floor(diff / (1000*60*60*24)); diff -= days*(1000*60*60*24);
+      const hours = Math.floor(diff / (1000*60*60)); diff -= hours*(1000*60*60);
+      const mins = Math.floor(diff / (1000*60)); diff -= mins*(1000*60);
+      const secs = Math.floor(diff/1000);
+      document.getElementById('countdown').textContent = `Year 3 loading: ${days}d ${hours}h ${mins}m ${secs}s`;
+    }
+    setInterval(updateCountdown,1000); updateCountdown();
+
+    // Surprise button: confetti + reveal message
+    surpriseBtn.addEventListener('click', ()=>{
+      // reveal message
+      surpriseBtn.disabled = true;
+      surpriseBtn.textContent = "Meet me tonight at our spot ❤️";
+      // run confetti
+      runConfetti();
+    });
+
+    // Tiny confetti using simple canvas implementation (no external libs)
+    function runConfetti(){
+      const c = document.getElementById('confetti-canvas');
+      c.width = window.innerWidth; c.height = window.innerHeight;
+      const ctx = c.getContext('2d');
+      const pieces = [];
+      const colors = ['#ff6b6b','#ffd166','#06d6a0','#4d96ff','#b388eb'];
+      for(let i=0;i<120;i++){
+        pieces.push({x:Math.random()*c.width,y:Math.random()*-c.height,vy:Math.random()*3+2, size:Math.random()*8+4, color:colors[Math.floor(Math.random()*colors.length)], rot:Math.random()*360});
+      }
+      let t=0;
+      function loop(){
+        ctx.clearRect(0,0,c.width,c.height);
+        pieces.forEach(p=>{
+          p.y += p.vy; p.rot += 5;
+          ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+          ctx.fillStyle = p.color;
+          ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+          ctx.restore();
+        });
+        t++; if(t<200) requestAnimationFrame(loop); else ctx.clearRect(0,0,c.width,c.height);
+      }
+      loop();
+    }
+
+    // Small note: You will want to replace placeholder images and audio file in the /images and /audio folders before publishing.
+
+  </script>
+
+  <!--
+    HOW TO CUSTOMIZE (quick notes inside the file):
+    1) Replace images/placeholderX.jpg with your own photos (same filenames) or update the <img> src paths.
+    2) For music: add an mp3 named "tumsehi.mp3" into an "audio" folder next to this HTML file or change the <source> src to a hosted mp3 URL.
+       IMPORTANT: "Tum Se Hi" is a copyrighted song. To keep things legal:
+         - Option A (recommended for a personal surprise link): use a short snippet you own or a licensed instrumental.
+         - Option B: embed a YouTube link to the official song instead of hosting the mp3. Replace the audio element with an iframe (note: autoplay & mute behavior differs on mobile).
+    3) Change the letter content inside the <div id="letterText"> to your real message to Bebo.
+    4) To deploy quickly: push this single HTML file to a GitHub repo and enable GitHub Pages (Settings → Pages → Branch: main, folder: /). Then share the generated URL or make a QR code.
+    5) If you'd like, I can adapt this to automatically pull your images from a folder or make a prettier timeline with animation libraries.
+  -->
+</body>
+</html>
